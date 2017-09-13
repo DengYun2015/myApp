@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    width: 160px;
+    margin: 20px auto;
+}
+ul li{
+    list-style:none;
+}
+li .type1{
+    width: 19px;
+    height: 16px;
+    /*background-color: red;*/
+    display: inline-block;
+    background: url(../images/61.png) no-repeat 0px -41px;
+    vertical-align: middle;
+    margin-right: 4px;
+}

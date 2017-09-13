@@ -1,0 +1,9 @@
+﻿Thumbs.db
+.idea/
+test/
+vendor/
+runtime/
+*/runtime/
+app/web/assets/
+
+
