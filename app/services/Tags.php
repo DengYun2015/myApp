@@ -9,7 +9,7 @@ namespace app\services;
 
 use yii\db\Exception;
 
-class Tags extends \common\models\Tags
+class Tags extends \common\services\Tags
 {
     /**
      * @param string $tag

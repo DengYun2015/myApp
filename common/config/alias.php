@@ -5,4 +5,5 @@
  */
 Yii::setAlias('console',PROJECT_ROOT.DIRECTORY_SEPARATOR.'console');
 Yii::setAlias('frontend',PROJECT_ROOT.DIRECTORY_SEPARATOR.'frontend');
+Yii::setAlias('app',PROJECT_ROOT.DIRECTORY_SEPARATOR.'app');
 Yii::setAlias('common',PROJECT_ROOT.DIRECTORY_SEPARATOR.'common');

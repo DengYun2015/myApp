@@ -4,7 +4,7 @@
  * @time: 2017/3/31 16:55
  */
 
-namespace frontend\models;
+namespace frontend\services;
 
 
 use yii\base\Model;

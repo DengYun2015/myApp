@@ -9,7 +9,7 @@ namespace app\services;
 
 use yii\db\Exception;
 
-class ContentTag extends \common\models\ContentTag
+class ContentTag extends \common\services\ContentTag
 {
 
     /**
@@ -39,21 +39,6 @@ class ContentTag extends \common\models\ContentTag
             }
         }
         return $tagNameIds;
-    }
-
-    /**
-     * @param int $contentId
-     * @return array
-     */
-    public static function getContentTags($contentId)
-    {
-        $data = self::find()->alias('A')->select('B.id,B.tag_name')
-            ->leftJoin(Tags::tableName().' as B','A.tag_id=B.id')->asArray()->all();
-        $idTagMaps = [];
-        foreach ($data as $row){
-            $idTagMaps[$row['id']] = $row['tag_name'];
-        }
-        return $idTagMaps;
     }
 
 }

@@ -7,22 +7,8 @@
 namespace app\services;
 
 
-class Content extends \common\models\Content
+class Content extends \common\services\Content
 {
-
-    /**
-     * @var array
-     */
-    private $tags = [];
-
-    /**
-     * @return array
-     */
-    public function getTags()
-    {
-        return $this->tags;
-    }
-
     /**
      * @param $content
      * @return true
@@ -52,20 +38,6 @@ class Content extends \common\models\Content
     }
 
     /**
-     * @param $id
-     * @return Content|array
-     */
-    public static function getDetail($id)
-    {
-        $data = self::findOne($id);
-        if (empty($data)) {
-            return [];
-        }
-        $data->tags = ContentTag::getContentTags($data->id);
-        return $data;
-    }
-
-    /**
      * @param int $userId
      * @param int $page
      * @param int $size
@@ -78,7 +50,6 @@ class Content extends \common\models\Content
         ];
         return self::find()->where($query)->offset(($page - 1) * $size)->limit($size)->orderBy('id desc')->all();
     }
-
 
     public function beforeSave($insert)
     {
