@@ -1,5 +1,5 @@
 <?php
-namespace app\models;
+namespace app\services;
 
 use Yii;
 use yii\base\NotSupportedException;

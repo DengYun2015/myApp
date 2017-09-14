@@ -2,7 +2,7 @@
 /**
  * @author: dengyun
  * @time: 2017/9/12 19:58
- * @var $content \app\models\Content
+ * @var $content \app\services\Content
  */
 
 use yii\helpers\Url;

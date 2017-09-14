@@ -4,7 +4,7 @@
  * @time: 2017/9/12 17:29
  */
 
-namespace app\models;
+namespace app\services;
 
 
 use yii\db\Exception;

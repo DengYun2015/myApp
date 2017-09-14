@@ -21,15 +21,7 @@ AdminLteAsset::register($this);
         <?php $this->head() ?>
     </head>
     <body class="skin-blue sidebar-mini">
-    <?php
-    /**
-     * @author: dengyun
-     * @time: 2017/8/4 10:23
-     */
-    \app\assets\AdminLteAsset::register($this);
-    ?>
     <div class="wrapper">
-
         <header class="main-header">
             <!-- Logo -->
             <a href="AdminLte/index2.html" class="logo">

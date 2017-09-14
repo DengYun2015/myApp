@@ -16,7 +16,7 @@ class BootStrap extends AdminLteBase
     public $css=[
         'bootstrap/css/bootstrap.min.css',
         'bootstrap/css/bootstrap-theme.css',
-        'https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css'
+        '//cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css'
     ];
 
     public $depends = [

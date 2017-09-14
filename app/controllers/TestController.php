@@ -7,8 +7,8 @@
 namespace app\controllers;
 
 
-use app\models\ContentTag;
-use app\models\User;
+use app\services\ContentTag;
+use app\services\User;
 use yii\helpers\Url;
 use yii\web\Controller;
 

@@ -7,8 +7,8 @@
 namespace app\controllers;
 
 
-use app\models\Content;
-use app\models\Options;
+use app\services\Content;
+use app\services\Options;
 use yii\helpers\Url;
 
 class ContentController extends BaseController

@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use common\models\Options;
-use app\models\crud\Options as OptionsSearch;
+use app\services\crud\Options as OptionsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

@@ -4,7 +4,7 @@
  * @time: 2017/9/12 17:22
  */
 
-namespace app\models;
+namespace app\services;
 
 
 class Content extends \common\models\Content

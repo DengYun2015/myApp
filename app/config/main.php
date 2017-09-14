@@ -31,7 +31,7 @@ return [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'app\services\User',
             'enableAutoLogin' => true,
         ],
         'db'=>[
