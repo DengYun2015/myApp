@@ -78,7 +78,7 @@ use yii\widgets\LinkPager;
         <div class="panel-body">
             <article class="media">
                 <div class="media-body">
-                    <i class="fa fa-angle-right"></i><a href="#" class="font-semibold">测试</a><br> <i
+                    <i class="fa fa-angle-right"></i><a href="#" class="font-semibold">测试</a><br>
                 </div>
             </article>
         </div>
