@@ -9,7 +9,7 @@ namespace common\services;
 
 class Options extends \common\models\Options
 {
-    const CONTENT_CATEGOTRY_GROUP = 'content_category';
+    const CONTENT_CATEGORY_GROUP = 'content_category';
 
     private static $contentCotegories = [];
 
@@ -21,7 +21,7 @@ class Options extends \common\models\Options
     {
         $query = [
             'is_deleted' => 0,
-            'group' => self::CONTENT_CATEGOTRY_GROUP,
+            'group' => self::CONTENT_CATEGORY_GROUP,
             'option_key' => $parentNode
         ];
         return self::find()->select('name,id')->where($query)->all();
