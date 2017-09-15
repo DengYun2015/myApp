@@ -7,7 +7,7 @@
 namespace backend\controllers;
 
 
-use backend\services\Content;
+use backend\services\Article;
 use backend\services\Options;
 use yii\helpers\Url;
 
@@ -18,7 +18,7 @@ class ContentController extends BaseController
         $request = \Yii::$app->request;
         if ($request->isPost) {
             $data = $request->post();
-            $model = new Content();
+            $model = new Article();
             $params = [];
             if ($model->addContent($data)) {
                 $params['success'] = true;
@@ -54,9 +54,9 @@ class ContentController extends BaseController
             $category = Options::getAllContentCotegory(0);
             $params = ['category' => $category];
             if ($id > 0) {
-                $params['content'] = Content::getDetail($id);
+                $params['content'] = Article::getDetail($id);
             } else {
-                $params['content'] = new Content();
+                $params['content'] = new Article();
             }
             return $this->render('edit', $params);
         }
@@ -64,13 +64,13 @@ class ContentController extends BaseController
 
     public function actionDetail($id = '')
     {
-        $content = Content::getDetail($id);
+        $content = Article::getDetail($id);
         return $this->render('detail', ['content' => $content]);
     }
 
     public function actionList($page = 1, $size = 20)
     {
-        $list = Content::getList(\Yii::$app->user->id, $page, $size);
+        $list = Article::getList(\Yii::$app->user->id, $page, $size);
         $params = [
             'page' => $page,
             'size' => $size,

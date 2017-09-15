@@ -9,7 +9,7 @@ namespace backend\services;
 
 use yii\db\Exception;
 
-class ContentTag extends \common\services\ContentTag
+class ArticleTag extends \common\services\ArticleTag
 {
 
     /**

@@ -2,7 +2,7 @@
 /**
  * @author: dengyun
  * @time: 2017/9/14 17:16
- * @var $content \frontend\services\Content
+ * @var $content \frontend\services\Article
  */
 ?>
 <div class="col-lg-12">
@@ -22,13 +22,8 @@
     <div class="blog-post">
         <!-- 呈现  -->
         <div class="post-item">
-            <!-- <div class="post-media">
-          <img src="http://localhost/typecho/usr/themes/cnmb/images/m42.jpg" class="img-full">
-            </div> -->
             <div class="caption wrapper-lg">
-                <h2 class="post-title">
-                    <a itemtype="url" href="http://localhost/typecho/index.php/archives/4/"
-                       class="title"><?= $content->title ?></a></h2>
+                <h2 class="post-title"><a itemtype="url" href="#" class="title"><?= $content->title ?></a></h2>
                 <div class="text-muted">
                     <i class="fa fa-user icon-muted">by-</i>
                     <a href="#" class="m-r-sm">admin</a>

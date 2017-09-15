@@ -2,7 +2,7 @@
 /**
  * @author: dengyun
  * @time: 2017/9/13 14:28
- * @var \backend\services\Content[] $list
+ * @var \backend\services\Article[] $list
  * @var int $page
  * @var int $size
  * @ver $total int

@@ -3,7 +3,7 @@
  * @author: dengyun
  * @time: 2017/8/29 16:42
  * @var $category \common\models\Options[]
- * @var $content \backend\services\Content
+ * @var $content \backend\services\Article
  */
 
 use backend\assets\plugin\CkEditor;

@@ -5,7 +5,7 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "{{%content}}".
+ * This is the model class for table "{{%article}}".
  *
  * @property integer $id
  * @property string $title
@@ -18,14 +18,14 @@ use Yii;
  * @property string $create_time
  * @property string $update_time
  */
-class Content extends \yii\db\ActiveRecord
+class Article extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%content}}';
+        return '{{%article}}';
     }
 
     /**
@@ -55,7 +55,7 @@ class Content extends \yii\db\ActiveRecord
             'type' => 'Type',
             'version' => 'Version',
             'user_id' => 'User ID',
-            'status' => '0：删除，1：发布，3：草稿',
+            'status' => '0：删除，1：发布，2：草稿',
             'create_time' => 'Create Time',
             'update_time' => 'Update Time',
         ];

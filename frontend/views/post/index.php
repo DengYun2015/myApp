@@ -2,17 +2,23 @@
 /**
  * @author: dengyun
  * @time: 2017/9/14 14:48
- * @var $list \app\services\Content[]
+ * @var $list \frontend\services\Article[]
+ * @var $pageNation yii\data\Pagination
  */
 
 use yii\helpers\Url;
+use yii\widgets\LinkPager;
 
 ?>
 
 <div class="col-sm-9">
     <div class="blog-post">
         <!-- 开始循环  -->
-        <?php foreach ($list as $content): ?>
+        <?php
+        if(empty($list)){
+            echo '<div class="alert alert-warning" role="alert">没有找到相关内容！</div>';
+        }else{
+        foreach ($list as $content): ?>
         <div class="post-item">
             <div class="caption wrapper-lg">
                 <h3 class="post-title">
@@ -41,7 +47,10 @@ use yii\helpers\Url;
                 </div>
             </div>
         </div>
-        <?php endforeach; ?>
+        <?php endforeach;
+        echo LinkPager::widget(['pagination'=>$pageNation]);
+        }
+        ?>
     </div>
     <!-- 结束循环  -->
     <div class="text-center m-t-lg m-b-lg">
@@ -57,8 +66,8 @@ use yii\helpers\Url;
             <article class="media">
                 <div class="media-body">
                     <i class="fa fa-angle-right"></i>
-                    <a href="http://localhost/typecho/index.php/archives/1/#comment-1"
-                       class="font-semibold">Typecho</a>: 欢迎加入 Typecho 大家族<br>
+                    <a href="#"
+                       class="font-semibold">Demo</a>: 欢迎加入 Demo 大家族<br>
                 </div>
             </article>
         </div>
@@ -69,15 +78,7 @@ use yii\helpers\Url;
         <div class="panel-body">
             <article class="media">
                 <div class="media-body">
-                    <i class="fa fa-angle-right"></i><a
-                        href="http://localhost/typecho/index.php/archives/4/"
-                        class="font-semibold">测试</a><br> <i
-                        class="fa fa-angle-right"></i><a
-                        href="http://localhost/typecho/index.php/archives/3/"
-                        class="font-semibold">代码测试</a><br> <i
-                        class="fa fa-angle-right"></i><a
-                        href="http://localhost/typecho/index.php/archives/1/"
-                        class="font-semibold">欢迎使用 Typecho</a><br>
+                    <i class="fa fa-angle-right"></i><a href="#" class="font-semibold">测试</a><br> <i
                 </div>
             </article>
         </div>
@@ -90,7 +91,7 @@ use yii\helpers\Url;
         <div class="panel-body">
             <div class="nav-primary">
                 <div class="list-group-item"><span class="badge pull-right">3 </span>
-                    <a href="http://localhost/typecho/index.php/category/default/">默认分类</a>
+                    <a href="#">默认分类</a>
                 </div>
             </div>
         </div>

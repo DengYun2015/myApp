@@ -7,9 +7,7 @@
 namespace common\services;
 
 
-use common\services\Tags;
-
-class ContentTag extends \common\models\ContentTag
+class ArticleTag extends \common\models\ArticleTag
 {
     /**
      * @param int $contentId
@@ -17,7 +15,7 @@ class ContentTag extends \common\models\ContentTag
      */
     public static function getContentTags($contentId)
     {
-        $data = self::find()->select('tag_id')->where(['content_id'=>$contentId])->asArray()->all();
+        $data = self::find()->select('tag_id')->where(['article_id'=>$contentId])->asArray()->all();
         $tags = [];
         foreach ($data as $row){
             $tags[$row['tag_id']] = Tags::getTagName($row['tag_id']);

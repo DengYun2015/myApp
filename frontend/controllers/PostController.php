@@ -7,7 +7,8 @@
 namespace frontend\controllers;
 
 use frontend\collections\msg;
-use frontend\services\Content;
+use frontend\services\Article;
+use yii\data\Pagination;
 use yii\web\Controller;
 
 class PostController extends Controller
@@ -17,11 +18,18 @@ class PostController extends Controller
      * @param int $page
      * @return string
      */
-    public function actionIndex($page = 1)
+    public function actionIndex($page = 1 ,$category = 0)
     {
-        (is_int($page) && $page > 1) or $page = 1;
-        $list = Content::getList($page, 20);
-        return $this->render('index', ['list' => $list]);
+        $category  = intval($category);
+        $page = intval($page);
+        $pageSize = 1;
+        (is_int($page) && $page >= 0) or $page = 1;
+        $list = Article::getList($page, $pageSize ,$category);
+        $pageNation = new Pagination();
+        $pageNation->page = $page-1;
+        $pageNation->pageSize = $pageSize;
+        $pageNation->totalCount = Article::getTotal($category);
+        return $this->render('index', ['list' => $list,'pageNation'=>$pageNation]);
     }
 
     /**
@@ -35,7 +43,7 @@ class PostController extends Controller
         if ($id < 1) {
             return $this->contentNotExist();
         }
-        $detail = Content::getDetail($id);
+        $detail = Article::getDetail($id);
         if (empty($detail)) {
             return $this->contentNotExist();
         }

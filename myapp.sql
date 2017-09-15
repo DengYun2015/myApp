@@ -10,16 +10,16 @@ Target Server Type    : MYSQL
 Target Server Version : 50547
 File Encoding         : 65001
 
-Date: 2017-09-14 19:45:59
+Date: 2017-09-15 19:45:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for app_content
+-- Table structure for app_article
 -- ----------------------------
-DROP TABLE IF EXISTS `app_content`;
-CREATE TABLE `app_content` (
+DROP TABLE IF EXISTS `app_article`;
+CREATE TABLE `app_article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `summary` varchar(255) NOT NULL,
@@ -37,18 +37,18 @@ CREATE TABLE `app_content` (
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Table structure for app_content_tag
+-- Table structure for app_article_tag
 -- ----------------------------
-DROP TABLE IF EXISTS `app_content_tag`;
-CREATE TABLE `app_content_tag` (
+DROP TABLE IF EXISTS `app_article_tag`;
+CREATE TABLE `app_article_tag` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `content_id` int(11) NOT NULL,
+  `article_id` int(11) NOT NULL,
   `tag_id` int(11) NOT NULL,
   `create_time` datetime NOT NULL,
   `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `tag_id` (`tag_id`),
-  KEY `content_id` (`content_id`)
+  KEY `content_id` (`article_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
@@ -66,7 +66,7 @@ CREATE TABLE `app_options` (
   `modifytime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `group` (`group`,`option_key`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='配置';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='配置';
 
 -- ----------------------------
 -- Table structure for app_tags

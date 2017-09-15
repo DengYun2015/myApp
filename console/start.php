@@ -4,7 +4,7 @@
  * @time: 2017/3/31 16:11
  */
 
-define('APP_ROOT','../');
+define('APP_ROOT',realpath('../'));
 define('VENDOR','../vendor/');
 define('CONSOLE_ROOT',__DIR__);
 defined('YII_DEBUG') or define('YII_DEBUG', true);

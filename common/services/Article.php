@@ -6,9 +6,8 @@
 
 namespace common\services;
 
-use common\models\Content as ContentModel;
 
-class Content extends ContentModel
+class Article extends \common\models\Article
 {
 
     /**
@@ -25,7 +24,7 @@ class Content extends ContentModel
             if(empty($this->id)){
                 return [];
             }else{
-                $this->tags = ContentTag::getContentTags($this->id);
+                $this->tags = ArticleTag::getContentTags($this->id);
             }
         }
         return $this->tags;
@@ -33,7 +32,7 @@ class Content extends ContentModel
 
     /**
      * @param $id
-     * @return Content|array
+     * @return Article|array
      */
     public static function getDetail($id)
     {
@@ -41,7 +40,7 @@ class Content extends ContentModel
         if (empty($data)) {
             return [];
         }
-        $data->tags = ContentTag::getContentTags($data->id);
+        $data->tags = ArticleTag::getContentTags($data->id);
         return $data;
     }
 }

@@ -7,7 +7,7 @@
 namespace backend\services;
 
 
-class Content extends \common\services\Content
+class Article extends \common\services\Article
 {
     /**
      * @param $content
@@ -31,7 +31,7 @@ class Content extends \common\services\Content
         if($saveResult){
             $contentId = $this->id;
             $tags = explode(',', $tags);
-            $tagIdMaps = ContentTag::addContentTags($tags, $contentId);
+            $tagIdMaps = ArticleTag::addContentTags($tags, $contentId);
             $this->tags = array_flip($tagIdMaps);
         }
         return $saveResult;

@@ -7,7 +7,7 @@
 namespace backend\controllers;
 
 
-use backend\services\ContentTag;
+use backend\services\ArticleTag;
 use backend\services\User;
 use yii\helpers\Url;
 use yii\web\Controller;

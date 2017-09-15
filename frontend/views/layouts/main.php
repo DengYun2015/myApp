@@ -6,6 +6,8 @@
 
 use frontend\assets\frontendAsset;
 use yii\helpers\Html;
+use frontend\services\Options;
+use yii\helpers\Url;
 
 frontendAsset::register($this);
 
@@ -29,7 +31,7 @@ frontendAsset::register($this);
             <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
                 <i class="icon-list"></i>
             </a>
-            <a href="http://localhost/typecho/" class="navbar-brand text-lt">
+            <a href="#" class="navbar-brand text-lt">
                 <i class=" icon-bubble"></i>
                 <img src="#" alt="." class="hide">
                 <span class="hidden-nav-xs m-l-sm">Hello World</span
@@ -74,17 +76,17 @@ frontendAsset::register($this);
                     <ul class="dropdown-menu animated fadeInRight">
                         <li>
                             <span class="arrow top"></span>
-                            <a href="http://localhost/typecho/admin/login.php" target="_blank">登录</a>
+                            <a href="#" target="_blank">登录</a>
                         </li>
 
                         <li class="divider"></li>
                         <li>
-                            <a href="http://localhost/typecho/index.php/feed/" target="_blank">文章RSS</a>
+                            <a href="#" target="_blank">文章RSS</a>
                         </li>
 
                         <li class="divider"></li>
                         <li>
-                            <a href="http://localhost/typecho/index.php/feed/comments/" target="_blank">评论RSS</a>
+                            <a href="#" target="_blank">评论RSS</a>
                         </li>
                     </ul>
                 </li>
@@ -101,38 +103,22 @@ frontendAsset::register($this);
                              data-size="10px" data-railOpacity="0.2">
                             <!-- nav -->
                             <nav class="nav-primary hidden-xs">
-                                <ul class="nav bg clearfix">
+<!--                                <ul class="nav bg clearfix">
                                     <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
                                         选择
                                     </li>
-
-
-                                    <!--                     <li>
-                                                          <a href="http://localhost/typecho/">
-                                                            <i class="icon-drawer icon text-primary-lter"></i>
-                                                            <b class="badge bg-primary pull-right">6</b>
-                                                            <span class="font-bold">事件</span>
-                                                          </a>
-                                                        </li>
-                                                         -->
-
-
                                     <li>
-
-                                        <a href="http://localhost/typecho/index.php/about.html">
+                                        <a href="#">
                                             <i class="icon-social-twitter icon  text-info-dker"></i>
                                             <span class="font-bold"> 关于</span>
                                         </a>
-
-
                                     </li>
                                     <li class="m-b hidden-nav-xs"></li>
-                                </ul>
+                                </ul>-->
                                 <ul class="nav" data-ride="collapse">
                                     <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
-                                        控制
+                                        分类目录
                                     </li>
-
                                     <li class="active">
                                     <li>
                                         <a href="#" class="auto">
@@ -144,15 +130,28 @@ frontendAsset::register($this);
                                             <span>分类</span>
                                         </a>
                                         <ul class="nav dk text-sm">
-                                            <li>
-                                                <a href="http://localhost/typecho/index.php/category/default/"
-                                                   class="auto">
-                                                    <i class="fa fa-angle-right text-xs"></i>
-                                                    <span>默认分类</span>
-                                                </a>
-                                            </li>
+                                            <?php
+                                            function createMenu($menuNodes)
+                                            {
+                                                foreach ($menuNodes as $node){
+                                                    echo '<li>';
+                                                    echo '<a href="'. Url::to(['post/index','category'=>$node['id']]).'" class="auto">';
+                                                    echo '<i class="fa fa-angle-right text-xs"></i>';
+                                                    echo '<span>'.$node['name'].'</span>';
+                                                    echo '</a>';
+                                                    if(isset($node['childNode'])){
+                                                        echo '<ul class="nav dk text-sm">';
+                                                        createMenu($node['childNode']);
+                                                        echo '</ul>';
+                                                    }
+                                                    echo '</li>';
+                                                }
+                                            }
+                                            createMenu(Options::getCategoryNodes());
+                                            ?>
                                         </ul>
                                     </li>
+
                                     <div style="position:fixed; bottom:0; "></div>
                             </nav>
                             <!-- / nav -->
