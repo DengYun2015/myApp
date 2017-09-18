@@ -4,13 +4,31 @@
  * @time: 2017/9/15 15:51
  */
 
-return [
+require __DIR__ . '/alias.php';
 
-    'basePath' => dirname(__DIR__),
+if (YII_ENV == YII_ENV_PROD) {
+    $bootstrap = ['log'];
+    $modules = [];
+} else {
+    $bootstrap = ['log', 'gii','debug'];
+    $modules = [
+        'debug' => [
+            'class' => 'yii\debug\Module',
+            'historySize' => 10,
+        ],
+        'gii' => 'yii\gii\Module',
+    ];
+}
+
+return [
     'vendorPath' => VENDOR,
-    'bootstrap' => ['log', 'gii'],
-    'modules' => [],
+    'bootstrap' => $bootstrap,
+    'modules' => $modules,
+    'language' => 'zh-CN',
     'components' => [
+        'request' => [
+            'cookieValidationKey' => 'asdgfasmMna)(&)(123,',
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -29,7 +47,13 @@ return [
             'username' => 'root',
             'password' => 'root',
             'charset' => 'utf8',
-            'tablePrefix' => 'app_'
+            'tablePrefix' => 'app_',
+            'enableSchemaCache' => YII_ENV == YII_ENV_PROD,
+        ],
+        'urlManager' => [
+            'enablePrettyUrl' => false,
+            'showScriptName' => false,
+            'rules' => [],
         ],
     ],
     'params' => require __DIR__ . '/params.php'

@@ -16,13 +16,14 @@ class PostController extends Controller
     /**
      * 文章列表
      * @param int $page
+     * @param int $category
      * @return string
      */
     public function actionIndex($page = 1 ,$category = 0)
     {
         $category  = intval($category);
         $page = intval($page);
-        $pageSize = 1;
+        $pageSize = 5;
         (is_int($page) && $page >= 0) or $page = 1;
         $list = Article::getList($page, $pageSize ,$category);
         $pageNation = new Pagination();
