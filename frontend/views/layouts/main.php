@@ -27,11 +27,11 @@ frontendAsset::register($this);
 <body>
 <section class="vbox">
     <header class="bg-white-only lter header header-md navbar navbar-fixed-top-xs">
-        <div class="navbar-header aside bg-success nav-xs">
+        <div class="navbar-header aside bg-success">
             <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
                 <i class="icon-list"></i>
             </a>
-            <a href="#" class="navbar-brand text-lt">
+            <a href="/" class="navbar-brand text-lt">
                 <i class=" icon-bubble"></i>
                 <img src="#" alt="." class="hide">
                 <span class="hidden-nav-xs m-l-sm">Hello World</span
@@ -63,40 +63,11 @@ frontendAsset::register($this);
                 </div>
             </div>
         </form>
-
-        <div class="navbar-right ">
-            <ul class="nav navbar-nav m-n hidden-xs nav-user user">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
-                      <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                            <img src="http://secure.gravatar.com/avatar/" alt="Hello World"/>
-                      </span>
-                        个人中心 <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu animated fadeInRight">
-                        <li>
-                            <span class="arrow top"></span>
-                            <a href="#" target="_blank">登录</a>
-                        </li>
-
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#" target="_blank">文章RSS</a>
-                        </li>
-
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#" target="_blank">评论RSS</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
     </header>
     <section>
         <section class="hbox stretch">
             <!-- .aside -->
-            <aside class="bg-black dk nav-xs aside hidden-print" id="nav">
+            <aside class="bg-black dk aside hidden-print" id="nav">
                 <section class="vbox">
                     <section class="w-f-md scrollable">
                         <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0"
@@ -120,16 +91,15 @@ frontendAsset::register($this);
                                         分类目录
                                     </li>
                                     <li class="active">
-                                    <li>
-                                        <a href="#" class="auto">
-                                            <span class="pull-right text-muted">
-                                              <i class="fa fa-angle-left text"></i>
-                                              <i class="fa fa-angle-down text-active"></i>
-                                            </span>
-                                            <i class="icon-grid icon"></i>
-                                            <span>分类</span>
-                                        </a>
-                                        <ul class="nav dk text-sm">
+<!--                                        <a href="#" class="auto">-->
+<!--                                            <span class="pull-right text-muted">-->
+<!--                                              <i class="fa fa-angle-left text"></i>-->
+<!--                                              <i class="fa fa-angle-down text-active"></i>-->
+<!--                                            </span>-->
+<!--                                            <i class="icon-grid icon"></i>-->
+<!--                                            <span>分类</span>-->
+<!--                                        </a>-->
+<!--                                        <ul class="nav dk text-sm">-->
                                             <?php
                                             function createMenu($menuNodes)
                                             {
@@ -149,10 +119,10 @@ frontendAsset::register($this);
                                             }
                                             createMenu(Options::getCategoryNodes());
                                             ?>
-                                        </ul>
+                                        <!--</ul>-->
                                     </li>
-
-                                    <div style="position:fixed; bottom:0; "></div>
+                                </ul>
+                                <div style="position:fixed; bottom:0; "></div>
                             </nav>
                             <!-- / nav -->
                         </div>
@@ -164,15 +134,53 @@ frontendAsset::register($this);
                 <section class="vbox">
                     <section class="scrollable wrapper-lg">
                         <div class="row">
+                            <div class="col-lg-12">
+                                <!-- .breadcrumb -->
+                                <ul class="breadcrumb">
+                                    <li><a href="<?= \yii\helpers\Url::to(['post/index']) ?>"><i class="fa fa-home"></i> 首页</a></li>
+                                    <!--<li class="active">
+                                        <a href="#">
+                                            <i class="fa fa-list-ul"></i>
+                                            <a href="">默认分类</a>
+                                        </a>
+                                    </li>-->
+                                </ul>
+                                <!-- / .breadcrumb -->
+                            </div>
                             <?php $this->beginBody() ?>
                             <?= $content ?>
                             <?php $this->endBody() ?>
-                        </div>
+                            <div class="col-sm-3">
+                                <!--  最新文章 -->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">最新文章</div>
+                                    <div class="panel-body">
+                                        <article class="media">
+                                            <div class="media-body">
+                                                <?php
+                                                $recentArtices = \frontend\services\Article::getRecent();
+                                                foreach ($recentArtices as $artice){
+                                                ?>
+                                                <i class="fa fa-angle-right"></i>
+                                                    <a href="<?= Url::to(['post/detail','id'=>$artice->id]) ?>" class="font-semibold"><?= $artice->title ?></a>
+                                                    <br>
+                                                <?php } ?>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                                <!-- ./ 最新文章 -->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">友情链接</div>
+                                    <div class="panel-body">
+                                        <a style="margin-bottom: 5px;" href="http://qqdie.com/" class="btn btn-s-md btn-default" target="_blank">QQ爹博客</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </section>
                 </section>
-                <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open"
-                   data-target="#nav,html"></a>
+                <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
             </section>
         </section>
     </section>

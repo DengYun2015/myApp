@@ -34,4 +34,19 @@ class Article extends \common\services\Article
         }
         return self::find()->where($query)->count();
     }
+
+    /**
+     * @param int $count
+     * @return array|\common\models\Article[]
+     */
+    public static function getRecent($count = 5)
+    {
+        $query = [
+            'status' => 1,
+        ];
+        if ($count > 0) {
+             $count = intval($count);
+        }
+        return self::find()->select('title,id')->where($query)->orderBy('id desc')->limit($count)->all();
+    }
 }
