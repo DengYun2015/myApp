@@ -86,42 +86,7 @@ frontendAsset::register($this);
                                     </li>
                                     <li class="m-b hidden-nav-xs"></li>
                                 </ul>-->
-                                <ul class="nav" data-ride="collapse">
-                                    <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
-                                        分类目录
-                                    </li>
-                                    <li class="active">
-<!--                                        <a href="#" class="auto">-->
-<!--                                            <span class="pull-right text-muted">-->
-<!--                                              <i class="fa fa-angle-left text"></i>-->
-<!--                                              <i class="fa fa-angle-down text-active"></i>-->
-<!--                                            </span>-->
-<!--                                            <i class="icon-grid icon"></i>-->
-<!--                                            <span>分类</span>-->
-<!--                                        </a>-->
-<!--                                        <ul class="nav dk text-sm">-->
-                                            <?php
-                                            function createMenu($menuNodes)
-                                            {
-                                                foreach ($menuNodes as $node){
-                                                    echo '<li>';
-                                                    echo '<a href="'. Url::to(['post/index','category'=>$node['id']]).'" class="auto">';
-                                                    echo '<i class="fa fa-angle-right text-xs"></i>';
-                                                    echo '<span>'.$node['name'].'</span>';
-                                                    echo '</a>';
-                                                    if(isset($node['childNode'])){
-                                                        echo '<ul class="nav dk text-sm">';
-                                                        createMenu($node['childNode']);
-                                                        echo '</ul>';
-                                                    }
-                                                    echo '</li>';
-                                                }
-                                            }
-                                            createMenu(Options::getCategoryNodes());
-                                            ?>
-                                        <!--</ul>-->
-                                    </li>
-                                </ul>
+
                                 <div style="position:fixed; bottom:0; "></div>
                             </nav>
                             <!-- / nav -->
@@ -147,10 +112,36 @@ frontendAsset::register($this);
                                 </ul>
                                 <!-- / .breadcrumb -->
                             </div>
+                            <div class="col-sm-9">
                             <?php $this->beginBody() ?>
                             <?= $content ?>
                             <?php $this->endBody() ?>
+                            </div>
                             <div class="col-sm-3">
+                                <!-- ./ 分类目录 -->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">分类目录</div>
+                                    <div class="panel-body">
+                                        <?php
+                                        function createMenu2($menuNodes , $level = 0)
+                                        {
+                                            $nextLevel = $level+1;
+                                            foreach ($menuNodes as $node){
+                                                echo '<i class="fa fa-angle-right"></i>';
+                                                echo str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',$level);
+                                                echo '&nbsp;&nbsp;<a href="'. Url::to(['post/index','category'=>$node['id']]).'" class="auto">';
+                                                echo '<b>'.$node['name'].'</b>';
+                                                echo '</a><br/>';
+                                                if(isset($node['childNode'])){
+                                                    createMenu2($node['childNode'],$nextLevel);
+                                                }
+                                                echo '</li>';
+                                            }
+                                        }
+                                        createMenu2(Options::getCategoryNodes());
+                                        ?>
+                                    </div>
+                                </div>
                                 <!--  最新文章 -->
                                 <div class="panel panel-default">
                                     <div class="panel-heading">最新文章</div>

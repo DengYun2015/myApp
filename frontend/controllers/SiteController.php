@@ -12,32 +12,12 @@ use yii\web\Controller;
 
 class SiteController extends Controller
 {
+    public function actions()
+    {
+        return ['error' => 'yii\web\ErrorAction'];
+    }
+
     public function actionIndex()
     {
-        $nodes = Options::getCategoryNodes();
-        function createMenu($menuNodes)
-        {
-            foreach ($menuNodes as $node){
-                //echo $node['id'].$node['name'];
-                if(!isset($node['id'])){
-                    echo '<<<<<<<<<<<<<<<<';
-                    print_r($menuNodes);
-                    echo '>>>>>>>>>>>>>>>>'.PHP_EOL.PHP_EOL;
-                    continue;
-                    //exit;
-                }
-                echo PHP_EOL;
-                if(isset($node['childNode'])){
-                    createMenu($node['childNode']);
-                }else{
-                    //echo '===================';
-                    print_r($node);
-                }
-                continue;
-
-            }
-        }
-        print_r($nodes);
-        createMenu($nodes);
     }
 }
